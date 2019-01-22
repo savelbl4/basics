@@ -1,0 +1,70 @@
+<meta charset="utf-8">
+<script>
+	function getStatus() {
+		return 'Дилер: ' + dealer.join(' ') + ' = ' + getSum(dealer) + ' Игрок: ' + player.join(' ') + ' = ' + getSum(player);
+	}
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random()*(max - min * 1)) + min;
+	}
+	function getCard() {
+		var cards = ['6','7','8','9','10','J','Q','K','A'];
+		return cards[getRandomInt(0, cards.length - 1)];
+	}
+	function getSum(arg) {
+		var sum = 0;
+		for (var i = 0; i < arg.length; i++) {
+			if (arg[i] != 'A') {
+				if (arg[i] == 'J' || arg[i] == 'Q' || arg[i] == 'K') {
+					sum = sum + 10;
+				} else {
+					sum = sum + parseInt(arg[i]);
+				}
+			}
+		}
+		for (var i = 0; i < arg.length; i++) {
+			if (arg[i] == 'A') {
+				if (sum > 10) {
+					sum = sum + 1;
+				} else {
+					sum = sum + 11;
+				}
+			}
+		}
+		return sum
+	}
+	var dealer = [getCard()];
+	var player = [getCard(), getCard()];
+	if (getSum(player) == 21) {
+		alert('ёхохо\nты победитель')
+	} else {
+		var answer = '';
+		do {
+			answer = prompt(getStatus() + '\n\nхотите карту? 1 - да, иначе - нет');
+			if (answer == '1') {
+				player.push(getCard());
+				if (getSum(player) > 21) {
+					alert('PEREBOR\n\n' + getStatus());
+					break;
+				} else if (getSum(player) == 21){
+					alert('победа!\n\n' + getStatus());
+					break;
+				}
+			} else {
+				while (getSum(dealer) < 17) {
+					dealer.push(getCard());
+				}
+				if (getSum(dealer)==21) {
+					alert('Дилер победил\n\n' + getStatus());
+				} else if (getSum(dealer)>21) {
+					alert('Дилер перебор\n\n' + getStatus());
+				} else if (getSum(dealer)==getSum(player)) {
+					alert('ничья\n\n' + getStatus());
+				} else if (getSum(dealer)<getSum(player)) {
+					alert('победа\n\n' + getStatus());
+				} else {
+					alert('поражение\n\n' + getStatus());
+				}
+			}
+		} while (answer == '1');
+	}
+</script>

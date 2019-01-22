@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<script>
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random()*(max - min * 1)) + min;
+	}
+	function getCard() {
+		var cards = ['6','7','8','9','10','J','Q','K','A'];
+		return cards[getRandomInt(0, cards.length - 1)];
+	}
+	function getSum(arg) {
+		var sum = 0;
+		for (var i = 0; i < arg.length; i++) {
+			if (arg[i] != 'A') {
+				if (arg[i] == 'J' || arg[i] == 'Q' || arg[i] == 'K') {
+					sum = sum + 10;
+				} else {
+					sum = sum + parseInt(arg[i]);
+				}
+			}
+		}
+		for (var i = 0; i < arg.length; i++) {
+			if (arg[i] == 'A') {
+				if (sum > 10) {
+					sum = sum + 1;
+				} else {
+					sum = sum + 11;
+				}
+			}
+		}
+		alert('У тебя ' + sum + ' очков');
+	}
+	var dealer = [getCard()];
+	// var player = ['A', 'A'];
+	var player = [getCard(), getCard()];
+	alert('Дилер: ' + dealer.join(' ') + ' Игрок: ' + player.join(' '));
+	getSum(player);
+</script>

@@ -1,0 +1,46 @@
+<meta charset="utf-8">
+<script>
+	var rounds = 1000000;
+	var arrColour = [-1,0,1];
+	var n = 0;
+	var x = -1;
+	var arr = [];
+	var redAll = 0;
+	var red = 0;
+	var redMax = 0;
+	// заполняем массив данными
+	// простой вариант:
+	// for (var i = 0; i < rounds; i++) {
+	// 	arr.push(arrColour[Math.round(Math.random()*2)]);
+	// }
+	// alert(arr);
+	// сложный вариант
+	for (var i = 0; i <= rounds; i++) {
+		n = Math.round(Math.random()*36);
+		if (n != 0) {
+			n = (n % 2) * 2 - 1;
+		}
+		arr.push(n);
+	}
+	// анализируем массив
+	for (var i = 0; i < arr.length; i++) {
+		// если встречаем значение "x"
+		if(arr[i] == x){
+			redAll++;
+			// обнуляем счётчик "красных подряд"
+			red = 0;
+			// увеличиваем счётчик "красных подряд" до тех пор пока
+			// пока i меньше длины массива и i-тый этемент равен значению "x"
+			while(i < arr.length && arr[i] == x){
+				i++;
+				red++;
+			}
+			// проверяем значение "красных подряд" с "красных подряд максимальное"
+			// и увеличиваем последнее если в этот раз было больше
+			if (red>redMax) {
+				redMax=red;
+			}
+		}
+	}
+	alert('красное выпало '+redAll+' раз'+'\nчастота выпадания красного: '+redAll/arr.length*100+'%\nмаксимальное число красных подряд: '+redMax);
+</script>

@@ -1,0 +1,40 @@
+<meta charset="utf-8">
+<script>
+	var n = 0;
+	var x = '';
+	var z = prompt('стреляем?');
+	if (z=='да') {
+		do {
+			if ((Math.random() * 6) < 1) {
+				alert('ты проиграл');
+				break;
+			}
+			n++;
+			alert('ты заработал ' + n + ' очков');
+			x = prompt('продолжаем?');
+			if (x=='нет') {
+				alert('до скорого!');
+				break;
+			}
+		} while(true);
+	}
+	alert('Раундов сыграно: ' + n)
+</script>
+
+<!-- вариант номер два -->
+
+<script>
+	var n = 0;
+	// var x = '';
+	var z = prompt('да начнётся битва?');
+	do {
+		if ((Math.random() * 6) < 1) {
+			alert('ты проиграл');
+			break;
+		}
+			n++;
+			alert('ты заработал ' + n + 'очков');
+			z = prompt('продолжаем?');
+	} while(z=='да');
+	alert('Раундов сыграно: ' + n)
+</script>
