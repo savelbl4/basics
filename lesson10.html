@@ -1,13 +1,13 @@
 <meta charset="utf-8">
 <script>
-var v = parseInt(prompt('Введи сумму вклада'));
-var p = parseInt(prompt('Введи годовой %'));
-var s = parseInt(prompt('Введи срок вклада'));
-var g;
-for (var i = 0; i < s; i++) {
-	v=v+v*p/100;
-	g = i+1;
-	// Math.floor() округляет до целого
-	alert('прошло лет: ' + g + ' ты заработал: ' + Math.floor(v));
-}
+	var v = parseInt(prompt('Введи сумму вклада'));
+	var p = parseInt(prompt('Введи годовой %'));
+	var s = parseInt(prompt('Введи срок вклада'));
+	var g;
+	for (var i = 0; i < s; i++) {
+		v=v+v*p/100;
+		g = i+1;
+		// Math.floor() округляет до целого
+		alert('прошло лет: ' + g + ' ты заработал: ' + Math.floor(v));
+	}
 </script>
